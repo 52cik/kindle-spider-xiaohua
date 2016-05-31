@@ -1,0 +1,29 @@
+{
+  "name": "kindle-spider-xiaohua",
+  "version": "0.1.0",
+  "description": "kindle 爬虫 -- 校花的贴身高手",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/52cik/kindle-spider-xiaohua.git"
+  },
+  "keywords": [
+    "kindle",
+    "spider"
+  ],
+  "author": "52cik",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/52cik/kindle-spider-xiaohua/issues"
+  },
+  "homepage": "https://github.com/52cik/kindle-spider-xiaohua#readme",
+  "dependencies": {
+    "async": "^2.0.0-rc.5",
+    "cheerio": "^0.20.0",
+    "superagent": "^2.0.0",
+    "tinydb": "github:52cik/tinydb"
+  }
+}
