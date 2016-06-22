@@ -44,7 +44,7 @@ function fatchList(cb, limit) {
       })
     })
 
-    db.set(db_key, $list.eq(0).prop('href')) // 保存最新章节
+    db.set(db_key, $list.eq(-1).prop('href')) // 保存最新章节
 
     parallel(tasks, (err, results) => { // 并发抓取内容
       // console.log(results)
