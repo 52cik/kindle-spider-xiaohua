@@ -1,6 +1,6 @@
 {
   "name": "kindle-spider-xiaohua",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "kindle 爬虫 -- 校花的贴身高手",
   "main": "index.js",
   "scripts": {
@@ -21,9 +21,7 @@
   },
   "homepage": "https://github.com/52cik/kindle-spider-xiaohua#readme",
   "dependencies": {
-    "async": "^2.0.0-rc.5",
-    "cheerio": "^0.20.0",
-    "superagent": "^2.0.0",
+    "crawler": "^0.4.3",
     "tinydb": "github:52cik/tinydb"
   }
 }
