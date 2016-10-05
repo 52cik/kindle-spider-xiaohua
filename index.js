@@ -67,3 +67,6 @@ function fatchContent(title, uri) {
     }
   }])
 }
+
+// 导出接口
+module.exports = fatchList
