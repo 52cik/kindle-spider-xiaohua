@@ -3,17 +3,18 @@
 const tinyDB = require('tinydb')
 const Crawler = require('crawler')
 
-const uri = 'http://m.69shu.com/txt/1464.htm'
+const host = 'http://m.wutuxs.com'
+const uri = `${host}/html/0/23_1_1/`
 
 const db = new tinyDB()
-const db_key = 'xiaohuadetieshengaoshou'
+const db_key = 'db:xiaohua:new'
 
 let list = [] // 章节列表
 let onDrain_cb // 结束回掉
 
 const c = new Crawler({
   forceUTF8: true,
-  onDrain: function () {
+  onDrain() {
     c.pool.destroyAllNow()
     onDrain_cb && onDrain_cb(list)
   }
@@ -27,12 +28,12 @@ const c = new Crawler({
  */
 function fatchList(cb, limit) {
   onDrain_cb = cb
-  limit = limit || 5
+  limit = limit || 15
 
   c.queue([{
     uri,
-    callback: (error, result, $) => {
-      let $list = $('.chapter_list01>ul>li>a')
+    callback(error, result, $) {
+      let $list = $('.chapter>li>a')
       let last = db.get(db_key) // 最新章节
 
       $list.each((idx, el) => {
@@ -43,7 +44,7 @@ function fatchList(cb, limit) {
           return false
         }
 
-        fatchContent(title, href, cb)
+        fatchContent(title, host + href, cb)
       })
 
       db.set(db_key, $list.eq(0).attr('href')) // 保存最新章节
@@ -61,9 +62,9 @@ function fatchList(cb, limit) {
 function fatchContent(title, uri) {
   c.queue([{
     uri,
-    callback: (error, result, $) => {
-      let text = '<p>' + $('#chapcont').text().replace(/[\xa0]+/g, '</p><p>') + '</p>'
-      list.push({title, text})
+    callback(error, result, $) {
+      let text = '<p>' + $('#nr1').text().replace(/[\xa0]+/g, '</p><p>') + '</p>'
+      list.push({ title, text })
     }
   }])
 }
